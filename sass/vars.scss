@@ -1,0 +1,13 @@
+// break point
+$bp: 996px;
+
+$bg: #333;
+$fg: #b0b395;
+$fg2: #b38b1e;
+$ac: #FECB3B;
+$ac2: #7e7e7e;
+
+@mixin sticky() {
+    position: sticky;
+    position: -webkit-sticky;
+}

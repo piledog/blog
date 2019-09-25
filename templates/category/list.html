@@ -1,0 +1,6 @@
+{%extends "index.html"%}
+{%import "macros.html" as macros%}
+
+{%block content%}
+    {{macros::taxonomy(input=terms, single=false)}}
+{%endblock%}

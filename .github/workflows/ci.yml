@@ -1,0 +1,31 @@
+name: generate site
+
+on:
+  push:
+    branches:
+      - zola
+
+jobs:
+  build:
+    name: zola build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: build
+      run: |
+        curl -sL "https://github.com/getzola/zola/releases/download/v0.8.0/zola-v0.8.0-x86_64-unknown-linux-gnu.tar.gz" | tar xzf -
+        remote_repo="https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        remote_branch="master"
+
+        git config --global user.email "gh_bot@github.com"
+        git config --global user.name "gh_bot"
+        
+        ./zola build
+        cd public
+        git init
+        git add .
+        git commit -m "update"
+        git push --force "$remote_repo" master:${remote_branch}
+      
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
