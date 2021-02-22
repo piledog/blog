@@ -1,42 +1,21 @@
-{%macro post_header(page, summary=false)%}
+{%macro post_header(page)%}
 <header class="post-item">
-    <h2><a href="{{page.permalink}}">{{page.title}}</a></h2>
-    <div>
-        {%if page.date%}
-        <time datetime="{{page.date}}">{{page.date|date(format="%Y-%m-%e")}}</time>
-        {%endif%}
-
-        <ul>
-            {%for kind, names in page.taxonomies%}
-                {%for name in names%}
-                    <li><a href="{{get_taxonomy_url(kind=kind, name=name)}}">{{name}}</a></li>
-                {%endfor%}
-            {%endfor%}
-        </ul>
-    </div>
-    {%if summary and page.summary %}
-        <p>{{page.summary|safe}}</p>
+  <h2><a href="{{page.permalink}}">{{page.title}}</a></h2>
+  <div>
+    {%if page.date%}
+    <time datetime="{{page.date}}">{{page.date|date(format="%Y-%m-%e")}}</time>
     {%endif%}
+
+    <ul>
+      {%for kind, names in page.taxonomies%}
+        {%for name in names%}
+          <li><a href="{{get_taxonomy_url(kind=kind, name=name)}}">{{name}}</a></li>
+        {%endfor%}
+      {%endfor%}
+    </ul>
+  </div>
+  {%if page.summary %}
+    <p>{{page.summary|safe}}</p>
+  {%endif%}
 </header>
 {%endmacro post_header%}
-
-<!--
-input参数
-single: Array<Page>
-list: Array<TaxonomyTerm>
--->
-{%macro taxonomy(input, single=true)%}
-    {%if single%}
-        <h3>{{input|length}} post{{input|length|pluralize}}</h2>
-        {%for page in input%}
-            {{self::post_header(page=page)}}
-        {%endfor%}
-    {%else%}
-        <h3>{{input|length}} term{{input|length|pluralize}}</h2>
-        <ul class="terms">
-            {%for term in input%}
-            <li><a href="{{term.permalink}}"><h2>{{term.name}}({{term.pages|length}})</h2></a></li>
-            {%endfor%}
-        </ul>
-    {%endif%}
-{%endmacro taxonomy%}

@@ -1,9 +1,0 @@
-<ul>
-    {%set top60 = load_data(path='nagging.json') | slice(end=60) | reverse%}
-    <p>最近共BB了{{top60 | length}}次</p>
-    {%for item in top60%}
-    <li>
-        {{item.saliva}} (<time>{{item.ts|date}}</time>)
-    </li>
-    {%endfor%}
-</ul>

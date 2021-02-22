@@ -1,18 +1,15 @@
 {% extends "index.html" %}
 
 {% block content %}
-    {%if page.title%}
-        <h2 class='center-text'>{{page.title}}</h2>
-    {%endif%}
-    
-    {%if page.slug != 'about' and page.slug != 'nag'%}
-        <time class='center-text'>⏱️: {{page.reading_time}} min{{page.reading_time|pluralize}}</time>
-    {%endif%}
-    <article>
-        {{ page.content | safe }}
-    </article>
+  {%if page.title%}
+    <h2 style="text-align: center;display: block">{{page.title}}</h2>
+  {%endif%}
+  
+  <article>
+    {{ page.content | safe }}
+  </article>
 
-    {%if page.date%}
-        <time style="margin-top: 2em; display: inline-block;">{{page.date | date(format="%Y-%m-%e")}}</time>
-    {%endif%}
+  {%if page.date%}
+    <time style="margin-top: 2em; display: inline-block;">{{page.date | date(format="%Y-%m-%e")}}</time>
+  {%endif%}
 {% endblock content %}

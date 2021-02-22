@@ -2,12 +2,11 @@
 date = 2019-08-16T08:16:57
 title = "给终端设置代理"
 [taxonomies]
-category = ['dev']
-tag = ['terminal']
+tag = ["shell"]
 +++
 
 今天`brew`跟新包的时候, 速度是真的慢. 需要给终端设置代理, 一两条命令能搞定.
-</br>切换代理算是日常操作, 于是写个小函数方便使用.
+切换代理算是日常操作, 于是写个小函数方便使用.
 ```bash
 proxy_st=off
 toggle_proxy() {

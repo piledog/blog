@@ -1,20 +1,17 @@
 title = "Piledog"
-
-description = "喜吹牛, 好喷人, 遇强则弱"
+description = "扯蛋"
 
 base_url = "https://piledog.github.io/"
 
 compile_sass = true
+minify_html = false
 
-highlight_code = true
-highlight_theme = "dracula"
-
-build_search_index = false
-
-# 多个分类会复制到多个目录
 taxonomies = [
-    {name = "category"},
-    {name = "tag"},
+  {name = "tag"}
 ]
+
+[markdown]
+highlight_code = true
+highlight_theme = "gruvbox-dark"
 
 [extra]

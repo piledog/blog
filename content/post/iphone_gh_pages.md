@@ -1,9 +1,8 @@
 +++
-title = "使用手机更新GitHub Pages"
 date = 2019-09-23T20:07:03+08:00
+title = "使用手机更新GitHub Pages"
 [taxonomies]
-category = ['dev']
-tag = ['blog']
+tag = ["blog"]
 +++
 这篇文章将介绍如何使用手机更新GitHub Pages文章. 本文也是自己第一次使用手机完成并发布.
 

@@ -1,2 +1,1 @@
-## 个人博客
-[piledog](https://piledog.github.io/)
+个人博客

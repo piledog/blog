@@ -1,0 +1,12 @@
+{%set data = load_data(path="./static/gallery/desc.csv")%}
+{%for r in data.records%}
+<p>path: {{r[0]}}</p>
+<p>description: {{r[1]}}</p>
+
+
+<style>
+  p {
+    color: red;
+  }
+</style>
+{%endfor%}

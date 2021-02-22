@@ -1,6 +1,9 @@
 {%extends "index.html"%}
-{%import "macros.html" as macros%}
 
 {%block content%}
-    {{macros::taxonomy(input=term.pages)}}
+  {%set ps = term.pages %}
+  <h3>{{ps|length}} post{{ps|length|pluralize}}</h3>
+  {%for p in ps%}
+    {{self::post_header(page=p)}}
+  {%endfor%}
 {%endblock%}

@@ -2,5 +2,10 @@
 {%import "macros.html" as macros%}
 
 {%block content%}
-    {{macros::taxonomy(input=terms, single=false)}}
+  <h3>{{terms|length}} {{taxonomy.name}}{{terms|length|pluralize}}</h3>
+  <ul>
+    {%for term in terms%}
+    <li><h2><a href="{{term.permalink}}">{{term.name}}</a>: {{term.pages|length}}</h2></li>
+    {%endfor%}
+  </ul>
 {%endblock%}
