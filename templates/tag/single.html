@@ -4,6 +4,6 @@
   {%set ps = term.pages %}
   <h3>{{ps|length}} post{{ps|length|pluralize}}</h3>
   {%for p in ps%}
-    {{self::post_header(page=p)}}
+    {{self::post_info(page=p)}}
   {%endfor%}
 {%endblock%}

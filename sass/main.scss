@@ -1,140 +1,147 @@
 @import "vars";
 
 :root {
-    line-height: 1.8;
-    font-size: 1.2em;
-    font-family: sans-serif;
+  line-height: 1.8;
+  font-size: 1.2em;
+  font-family: sans-serif;
 }
 
 * {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    color: $fg;
-    background-color: $bg;
-    
-    >header {
-        display: flex;
-        align-items: center;
-        @include sticky();
-        top: 0; left: 0;
-        
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0; left:0;
-            width: 100%; height: 100%;
-            background-image: url('banner.gif');
-            z-index: -1;
-            filter: unquote("grayscale(100%)") brightness(40%);
-        }
+  color: $fg;
+  background-color: $bg;
+
+  >header {
+    position: relative;
+
+    >div {
+      display: flex;
+      align-items: center;
+      top: 0; left: 0;
+      width: $bp;
+      margin: 0 auto;
     }
 
-    main {
-        padding: 2em 3em;
-        margin: 0 auto;
-        width: $bp;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0; left:0;
+      width: 100%; height: 100%;
+      background-image: url('banner.gif');
+      z-index: -1;
+      filter: unquote("grayscale(100%)") brightness(40%);
     }
-    
-    footer {
-        text-align: center;
 
-        hr {
-            margin-top: 50px;
-            margin-bottom: 20px;
-            height: 1px; border: 0;
-            background-color: $n15;
-        }
+    a {
+      color: $n14;
     }
-    h3 {
-        margin: 0 1.2em;
-    }
+  }
+
+  main {
+    padding: 2em 3em;
+    margin: 0 auto;
+    width: $bp;
+  }
     
-    .nav {
-        li {
-            margin: 0 .4em;
-        }
-        &:last-child {
-            margin-right: 2em;
-        }
+  footer {
+    text-align: center;
+
+    hr {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      height: 1px; border: 0;
+      background-color: $n15;
     }
+  }
+  
+  .nav {
+    li {
+      margin: 0 .4em;
+    }
+    &:last-child {
+      margin-right: 2em;
+    }
+  }
 }
 
 @media (max-width: $bp) {
-    body {
-        main {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 1em;
-            overflow: hidden;
-        }
-        >header {
-            flex-direction: column;
-        }
-
-        .nav {
-            ul {
-                padding-left: 0;
-            }
-            &:last-child {
-                margin-right: 0;
-            }
-            text-align: center;
-        }
+  body {
+    main {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1em;
+      overflow: hidden;
     }
+    >header>div {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .nav {
+      ul {
+        padding-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      text-align: center;
+    }
+  }
 }
 
 .nav {
-    text-align: right;
-    flex-grow: 1;
+  text-align: right;
+  flex-grow: 1;
 
-    >ul>li {
-        font-size: 1.2em;
-    }
+  >ul>li {
+    font-size: 1.2em;
+  }
 }
 
 .post-item {
-    &>h2 {
-        margin: 1.5em 0 0.1em 0;
-    }
+  &>h2 {
+    margin: 1.5em 0 0.1em 0;
+  }
 
-    ul {
-        display: inline-block;
-        &>li>a {
-            border-radius: 2px;
-            background-color: rgba(0, 0, 0, 0.5);
-            background-blend-mode: multiply;
-            font-size: .8em;
-        }
+  ul {
+    display: inline-block;
+    &>li>a {
+      border-radius: 2px;
+      background-color: rgba(0, 0, 0, 0.5);
+      background-blend-mode: multiply;
+      font-size: .8em;
     }
+  }
 }
 
 body>header, .post-item {
-    li {
-        display: inline-block;
-    }
+  li {
+    display: inline-block;
+  }
 }
 
 /* use inline style instead */
 .note {
-    background-color: $n1;
-    background-blend-mode: multiply;
-    border-left: 4px solid $n10;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    padding-left: 1em;
+  background-color: $n1;
+  background-blend-mode: multiply;
+  border-left: 4px solid $n10;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding-left: 1em;
 }
 
 #power {
-    background: url("icon_power_50x50_50.png") left center;
-    background-size: auto 1em;
-    display: inline-block;
-    width: 1em; height: 1em;
+  background: url("icon_power_50x50_50.png") left center;
+  background-size: auto 1em;
+  display: inline-block;
+  width: 1em; height: 1em;
 
-    &:hover {
-        animation: show 2s steps(50) infinite;
-    }
+  &:hover {
+    animation: show 2s steps(50) infinite;
+  }
 }
 
 @keyframes show {
@@ -142,20 +149,20 @@ body>header, .post-item {
 }
 
 a {
-    color: $link;
-    text-decoration: none;
-    transition: color .3s;
+  color: $link;
+  text-decoration: none;
+  transition: color .3s;
 
-    &:hover {
-        color: $hl;
-    }
+  &:hover {
+    color: $hl;
+  }
 }
 
 time {
-    font-size: 0.9em;
-    font-style: italic;
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 ul {
-    padding-left: .4em;
+  padding-left: .4em;
 }

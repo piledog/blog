@@ -4,7 +4,7 @@ description = "扯蛋"
 base_url = "https://piledog.github.io/"
 
 compile_sass = true
-minify_html = false
+minify_html = true
 
 taxonomies = [
   {name = "tag"}

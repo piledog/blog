@@ -15,22 +15,22 @@
       <a href="{{get_url(path='/')}}">
         <h3>{{ config.title }}</h3>
       </a>
+
+      <nav class="nav">
+        <ul>
+      <!-- taxonomy links -->
+          {% for t in config.taxonomies %}
+            {%set name = t.name%}
+            <li><a href="{{get_url(path=name)}}">{{ name | capitalize }}</a></li>
+          {% endfor %}
+
+          <li><a href="{{get_url(path='gallery')}}">Gallery</a></li>
+
+          <li><a href="{{get_url(path='about')}}">About</a></li>
+        </ul>
+        
+      </nav>
     </div>
-
-    <nav class="nav">
-      <ul>
-		<!-- taxonomy links -->
-        {% for t in config.taxonomies %}
-          {%set name = t.name%}
-          <li><a href="{{get_url(path=name)}}">{{ name | capitalize }}</a></li>
-        {% endfor %}
-
-		<li><a href="{{get_url(path='gallery')}}">Gallery</a></li>
-
-        <li><a href="{{get_url(path='about')}}">About</a></li>
-      </ul>
-      
-    </nav>
   </header>
 
   <main>
@@ -41,7 +41,7 @@
       {{ sec.content | safe }}
       
       {% for p in sec.pages %}
-        {{macros::post_header(page=p)}}
+        {{macros::post_info(page=p)}}
       {% endfor %}
     {% endblock content %}
   </main>

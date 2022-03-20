@@ -1,12 +1,54 @@
-{%set data = load_data(path="./static/gallery/desc.csv")%}
-{%for r in data.records%}
-<p>path: {{r[0]}}</p>
-<p>description: {{r[1]}}</p>
+{%set p = "static/gallery/"%}
+{%set albums = ["craft", "nature"]%}
 
+{%for album in albums%}
+{%set data = load_data(path=p ~ album ~ "/desc.csv")%}
+<h1>{{album | title}}</h1>
+<div class="gallery">
+  {%for r in data.records%}
+  {%set raw = album ~ "/" ~ r[0]%}
+  <figure>
+    <figcaption>{{r[1]}}</figcaption>
+    <a href="{{get_url(path='gallery/' ~ raw)}}">
+      <img src="{{resize_image(path='../static/gallery/' ~ raw, width=480, op='fit_width')}}"/>
+    </a>
+  </figure>
+  {%endfor%}
+</div>
+{%endfor%}
 
 <style>
-  p {
-    color: red;
+  .gallery {
+    display: grid;
+    grid-template-rows: masonry;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1em;
+  }
+  img {
+    width: 100%;
+    display: block;
+  }
+  figure {
+    position: relative;
+    margin: 0;
+    border-radius: .5em;
+    overflow: hidden;
+  }
+
+  figcaption {
+    backdrop-filter: blur(10px);
+    /*color: rgb(var(--label-fg));*/
+    background-color: rgba(0, 0, 0, .3);
+    
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: .2rem 1rem;
+
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 </style>
-{%endfor%}

@@ -22,8 +22,3 @@ $bg: $n0;
 $fg: $n4;
 $link: $n7;
 $hl: $n12;
-
-@mixin sticky() {
-    position: sticky;
-    position: -webkit-sticky;
-}
